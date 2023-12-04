@@ -2,16 +2,14 @@ package com.example.demo.dao.impl;
 
 import com.example.demo.dao.PersonDao;
 import com.example.demo.model.Person;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
 import java.sql.Types;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.List;
 import java.util.Optional;
@@ -30,17 +28,16 @@ public class PersonDaoPostgresImpl implements PersonDao {
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        jdbcTemplate.update(new PreparedStatementCreator() {
-            @Override
-            public @NotNull PreparedStatement createPreparedStatement(java.sql.Connection connection) throws java.sql.SQLException {
-                PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                ps.setObject(1, id, Types.OTHER);
-                ps.setString(2, person.getName());
-                return ps;
-            }
+        jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
+            ps.setObject(1, id, Types.OTHER);
+            ps.setString(2, person.getName());
+            return ps;
         }, keyHolder);
 
-        return keyHolder.getKey() != null ? keyHolder.getKey().intValue() : 0;
+        UUID generatedUUID = UUID.fromString(Objects.requireNonNull(keyHolder.getKeys()).get("id").toString());
+
+        return 1;
     }
 
     @Override
