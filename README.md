@@ -1,37 +1,8 @@
-# MAVEN
-## mvnw [default]
-1. compile - compiles your code into bytecode.
-2. test - Runs unit tests.
-3. package - Creates a jar or war file.
-4. verify - Runs check & integration tests.
+# SPRING-BOOT TUTORIAL
 
-## Maven Workflow
-1. .\mvnw clean compile
-2. .\mvnw clean test
-3. .\mvnw clean package
-4. .\mvnw clean verify
-
-## Run jar file
-``` 
-java -jar filename.jar 
-```
-
-## Run spring boot project
-``` 
-.\mvnw spring-boot:run
-```
-
-## Spring App Layer
-<ul>
-<li>Presentation (Controllers): Take all of the data as a result of using the service layer, then present to the user through APIs</li>
-<li>Service: Use all the functionalities by the Persistence layer to meet the requirements the application is being built to handle.</li>
-<li>Persistence: Handle interactions with database using entities
-<ol>
-<li>Repositories</li>
-<li>Data Access Objects (DAOs)</li>
-</ol>
-</li>
-</ul>
+## DESCRIPTION
+Exploring the foundational architecture of Spring Boot, we employed PostgreSQL as the database, interacting with it through the use of JdbcTemplate. 
+To configure the database connection, navigate to the application.yml file and provide the necessary password for your PostgreSQL instance.
 
 ## FOLDER STRUCTURE
 ```
@@ -41,7 +12,7 @@ src/
 |   |   |-- com/
 |   |       |-- yourcompany/
 |   |           |-- yourapp/
-|   |               |-- controller/     # to handle HTTP requests and defines endpoints
+|   |               |-- api/     # to handle HTTP requests and defines endpoints
 |   |               |   |-- ApiController.java
 |   |               |
 |   |               |-- dao/            # to handle data operations
@@ -111,3 +82,38 @@ In summary, the controller delegates data retrieval to a service. The service th
 User Request --> Controller --> Service --> DAO --> Database
 
 NB: Read on Inversion of Control and Dependency Injection
+
+# MAVEN
+## mvnw [default]
+1. compile - compiles your code into bytecode.
+2. test - Runs unit tests.
+3. package - Creates a jar or war file.
+4. verify - Runs check & integration tests.
+
+## Maven Workflow
+1. .\mvnw clean compile
+2. .\mvnw clean test
+3. .\mvnw clean package
+4. .\mvnw clean verify
+
+## Run jar file
+``` 
+java -jar filename.jar 
+```
+
+## Run spring boot project
+``` 
+.\mvnw spring-boot:run
+```
+
+## Spring App Layer
+<ul>
+<li>Presentation (Controllers): Take all of the data as a result of using the service layer, then present to the user through APIs</li>
+<li>Service: Use all the functionalities by the Persistence layer to meet the requirements the application is being built to handle.</li>
+<li>Persistence: Handle interactions with database using entities
+<ol>
+<li>Repositories</li>
+<li>Data Access Objects (DAOs)</li>
+</ol>
+</li>
+</ul>

@@ -63,11 +63,15 @@ public class PersonDaoPostgresImpl implements PersonDao {
 
     @Override
     public int deletePersonById(UUID id) {
-        return 0;
+        String sql = "DELETE FROM person WHERE id = ?";
+
+        return jdbcTemplate.update(sql, id);
     }
 
     @Override
     public int updatePersonById(UUID id, Person person) {
-        return 0;
+        String sql = "UPDATE person SET name = ? WHERE id = ?";
+        return jdbcTemplate.update(sql, person.getName(), id);
     }
+
 }
