@@ -33,6 +33,6 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker pull ${{ secrets.DOCKER_IMAGE}}
-            docker rm -f mortgage
-            docker run -p 8080:8080 --name mortgage --restart=on-failure -d ${{ secrets.DOCKER_IMAGE }}
+            sudo docker pull ${{ secrets.DOCKER_IMAGE}}
+            sudo docker rm -f spring_con
+            sudo docker run -p 8080:8080 --name spring_con --restart=on-failure -d ${{ secrets.DOCKER_IMAGE }}
