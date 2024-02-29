@@ -1,8 +1,24 @@
-# SPRING-BOOT TUTORIAL
+# DEPLOYING SPRING BOOT WEB APPLICATION ON AMAZON EC2 ON AWS
+
 
 ## DESCRIPTION
-Exploring the foundational architecture of Spring Boot, we employed PostgreSQL as the database, interacting with it through the use of JdbcTemplate. 
-To configure the database connection, navigate to the application.yml file and provide the necessary password for your PostgreSQL instance.
+Exploring the foundational architecture of Spring Boot, we employed PostgreSQL as the database, interacting with it through the use of JdbcTemplate. Project was containerized using docker then hosted on ec2 instance.
+
+
+## REPOSITORY SECRETS
+Github Actions was the preferred CI/CD pipeline. Provide your repository secrets.
+
+```
+DB_HOST=""
+DB_NAME=""
+DB_PASSWORD=""
+DOCKER_IMAGE=""
+DOCKER_PASSWORD=""
+DOCKER_USERNAME=""
+EC2_PUBLIC_IP=""
+EC2_USERNAME=""
+SSH_PRIVATE_KEY=""
+```
 
 ## FOLDER STRUCTURE
 ```

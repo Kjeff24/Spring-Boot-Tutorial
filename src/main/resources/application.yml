@@ -1,6 +1,6 @@
 app:
   datasource:
-    jdbc-url: jdbc:postgresql://35.164.19.89:5432/mydb
+    jdbc-url: jdbc:postgresql://${{ secrets.DB_HOST }}:5432/${{ secrets.DB_NAME }}
     username: admin
     password: ${{ secrets.DB_PASSWORD }}
     pool-size: 30
